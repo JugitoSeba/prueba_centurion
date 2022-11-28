@@ -1,0 +1,108 @@
+<div class="row">
+    <div class="col-lg-4">
+        <form [formGroup]="formAnimal" (ngSubmit)="guardar_animal()">
+
+            <input formControlName="id" type="hidden">
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input formControlName="nombre" class="form-control" type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Edad</label>
+                <input formControlName="edad" class="form-control" type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Imagen</label>
+                <input formControlName="imagen" class="form-control" type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sexo</label>
+                <select formControlName="sexo" class="form-control" type="text">
+                    <option>Macho</option>
+                    <option>Hembra</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Desparasitado</label>
+                <select formControlName="desparasitado" class="form-control" type="text">
+                    <option>Si</option>
+                    <option>No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Vacunado</label>
+                <select formControlName="vacunado" class="form-control" type="text">
+                    <option>Si</option>
+                    <option>No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Castrado</label>
+                <select formControlName="castrado" class="form-control" type="text">
+                    <option>Si</option>
+                    <option>No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contacto</label>
+                <select formControlName="contacto" class="form-control" type="text">
+                    <option>Si</option>
+                    <option>No</option>
+                </select>
+            </div>
+
+    <div class="d-flex justify-content-start"> 
+    <button [class]="class_btn">{{text_btn}}</button>
+    <button (click)="resetear()" type="button" [style]="reset_display" class="btn btn-info ms-3">Reset</button>
+    </div>
+        
+
+        </form>
+    </div>
+
+    <div class="col-lg-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Imagen</th>
+                    <th>Sexo</th>
+                    <th>Desparasitado</th>
+                    <th>Vacunado</th>
+                    <th>Castrado</th>
+                    <th>Contacto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let veterinaria of lista_animales">
+                    <td>{{veterinaria.id}}</td>
+                    <td>{{veterinaria.nombre}}</td>
+                    <td>{{veterinaria.edad}}</td>
+                    <td>{{veterinaria.imagen}}</td>
+                    <td>{{veterinaria.sexo}}</td>
+                    <td>{{veterinaria.desparasitado}}</td>
+                    <td>{{veterinaria.vacunado}}</td>
+                    <td>{{veterinaria.castrado}}</td>
+                    <td>{{veterinaria.contacto}}</td>
+
+                    <td>
+                        <button (click)="eliminar_animales(veterinaria.id)" class="btn btn-dark btn-sm me-3">Borrar</button>
+                        <button (click)="editar_animales(veterinaria)"class="btn btn-danger btn-sm">Editar</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

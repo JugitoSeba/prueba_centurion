@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-lg-4">
+        <form [formGroup]="formServidor" (ngSubmit)="guardar_servidor()">
+
+            <input formControlName="id" type="hidden">
+
+            <div class="mb-3">
+                <label class="form-label">Razon Social</label>
+                <input formControlName="razon_social" class="form-control" type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Dirección IP</label>
+                <input formControlName="direccion_ip" class="form-control" type="number">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Descripción Equipo</label>
+                <input formControlName="descripcion_equipo" class="form-control" type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sistema Operativo</label>
+                <input formControlName="sistema_operativo" class="form-control" type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Estado</label>
+                <input formControlName="estado" class="form-control" type="text">
+            </div>
+
+    <div class="d-flex justify-content-start"> 
+    <button [class]="class_btn">{{text_btn}}</button>
+    <button (click)="resetear()" type="button" [style]="reset_display" class="btn btn-info ms-3">Reset</button>
+    </div>
+        
+
+        </form>
+    </div>
+
+    <div class="col-lg-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Razon Social</th>
+                    <th>Dirección IP</th>
+                    <th>Descripción Equipo</th>
+                    <th>Sistema Operativo</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let servidor of lista_servidores">
+                    <td>{{servidor.id}}</td>
+                    <td>{{servidor.razon_social}}</td>
+                    <td>{{servidor.direccion_ip}}</td>
+                    <td>{{servidor.descripcion_equipo}}</td>
+                    <td>{{servidor.sistema_operativo}}</td>
+                    <td>{{servidor.estado}}</td>
+                    <td>
+                        <button (click)="eliminar_servidor(servidor.id)" class="btn btn-dark btn-sm me-3">Borrar</button>
+                        <button (click)="editar_servidor(servidor)"class="btn btn-primary btn-sm">Editar</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

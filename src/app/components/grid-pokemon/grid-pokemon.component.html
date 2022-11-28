@@ -1,0 +1,11 @@
+<div class="row">
+    <div *ngFor="let u of lista_pokemon" class="col-lg-3">
+        <div class="card" >
+            <img src="{{u.imagen}}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{u.nombre}}</h5>
+              <h3 class="card-text">{{u.tipo}}</h3>   
+            </div>
+        </div>
+     </div>
+</div>

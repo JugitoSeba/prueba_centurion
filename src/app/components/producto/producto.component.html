@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="mb-3">
+        <label class="form-label">Busqueda</label>
+        <input [(ngModel)]="buscar" placeholder="Ingrese Busqueda" type="text" class="form-control">
+    </div>
+    
+    <div *ngFor="let u of lista_productos | filter:buscar; let indice = index" class="col-lg-3">
+        <div class="card" >
+            <img src="{{u.thumbnail}}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{u.title}}</h5>
+              <p class="card-text"><del>{{u.price}}$</del>
+              <h3 class="card-text">{{(u.price-(u.discountPercentage/100*u.price)).toFixed(2)}}$ Oferta</h3>
+              <a href="#" class="btn btn-success">Comprar</a>
+
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal'+indice">
+                Ver
+              </button>
+
+              <div class="modal fade" [id]="'exampleModal'+indice" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">{{u.title}}</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div ngFor*="let u of lista_productos" class="carousel-item active">
+                            <img src="{{u.images}}" class="d-block w-100" alt="...">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                      {{u.description}}
+                    <p>En stock: {{u.stock}}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-success">Comprar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </div>
+</div>

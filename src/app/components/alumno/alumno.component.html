@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-lg-4">
+        <form [formGroup]="formAlumno" (ngSubmit)="guardar_alumno()">
+
+            <input formControlName="id" type="hidden">
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input formControlName="nombre" class="form-control" type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input formControlName="apellido" class="form-control" type="text">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Correo</label>
+                <input formControlName="correo" class="form-control" type="text">
+            </div>
+
+    <div class="d-flex justify-content-start"> 
+    <button [class]="class_btn">{{text_btn}}</button>
+    <button (click)="resetear()" type="button" [style]="reset_display" class="btn btn-warning ms-3">Reset</button>
+    </div>
+        
+
+        </form>
+    </div>
+
+    <div class="col-lg-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let alumno of lista_alumnos">
+                    <td>{{alumno.id}}</td>
+                    <td>{{alumno.nombre}}</td>
+                    <td>{{alumno.apellido}}</td>
+                    <td>{{alumno.correo}}</td>
+                    <td>
+                        <button (click)="eliminar_alumno(alumno.id)" class="btn btn-danger btn-sm me-3">X</button>
+                        <button (click)="editar_alumno(alumno)"class="btn btn-dark btn-sm">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

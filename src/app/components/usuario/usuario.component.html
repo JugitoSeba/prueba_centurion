@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-lg-4">
+        <input [(ngModel)]="direccion" type="text" class="form-control">
+        <h4>{{direccion}}</h4>
+        <button (click)="obtener_usuarios()" class="btn btn-success">Obtener</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Sitio Web</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of lista_usuarios">
+                    <td>{{u.name}}</td>
+                    <td>{{u.username}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.website}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
